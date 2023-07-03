@@ -54,4 +54,13 @@ export class TodoStore extends Store {
     this.__todos[index].done = done;
     this.__fireUpdate();
   }
+
+  save() {
+    window.localStorage.setItem("TODOS", JSON.stringify(this.__todos));
+  }
+
+  load() {
+    const todos = JSON.parse(window.localStorage.getItem("TODOS"));
+    return todos;
+  }
 }

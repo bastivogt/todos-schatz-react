@@ -15,22 +15,14 @@ export default class App extends Component {
     super();
 
     store.todoStore.onUpdate = () => {
-      this.saveTodos();
+      store.todoStore.save();
       this.forceUpdate();
     };
   }
 
   componentDidMount() {
-    store.todoStore.setTodos(this.loadTodos());
-  }
-
-  saveTodos() {
-    window.localStorage.setItem("TODOS", JSON.stringify(store.todoStore.todos));
-  }
-
-  loadTodos() {
-    const todos = JSON.parse(window.localStorage.getItem("TODOS"));
-    return todos;
+    //store.todoStore.setTodos(this.loadTodos());
+    store.todoStore.setTodos(store.todoStore.load());
   }
 
   render() {
