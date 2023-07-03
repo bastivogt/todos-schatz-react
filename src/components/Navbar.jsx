@@ -8,13 +8,15 @@ export default class Navbar extends Component {
     this.infoHandler = this.infoHandler.bind(this);
   }
 
-  resetHandler() {
+  resetHandler(evt) {
+    evt.preventDefault();
     if (window.confirm("Willst du wirklich alle Todos resetten?")) {
       store.todoStore.setTodos([]);
     }
   }
 
-  infoHandler() {
+  infoHandler(evt) {
+    evt.preventDefault();
     alert("Ich liebe Dich. <3");
   }
 
